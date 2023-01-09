@@ -13,7 +13,7 @@
         <h1>Student's Data Form</h1>
         <hr>
     </div>
-    <form action="">
+    <form method="post" name="google-sheet">
     <div class="Personal">
         <h2>Personal Information</h2>
             <label for="Name">Full Name </label>
@@ -21,19 +21,19 @@
             <br>
             <label for="Gender">Gender </label>
             <fieldset>
-            <input required type="radio" name="Gender" id="Male">Male
-            <input type="radio" name="Gender" id="Female">Female
-            <input type="radio" name="Gender" id="Others">Others
+            <input required type="radio" name="Gender" value="Male" id="Male">Male
+            <input type="radio" name="Gender" value="Female" id="Female">Female
+            <input type="radio" name="Gender" value="Others" id="Others">Others
             </fieldset>
             <br>
-            <label for="FName">Father's Name </label>
-            <input required type="text" name="Fname" id="Father_Name" placeholder="Father's Name">
+            <label for="Father_Name">Father's Name </label>
+            <input required type="text" name="Father_Name" id="Father_Name" placeholder="Father's Name">
             <br>
-            <label for="PhNum">Phone No. </label>
-            <input required type="tel" name="PhNum" id="Phone_Number" placeholder="1234567890" pattern="[0-9]{10}">
+            <label for="Phone_Number">Phone No. </label>
+            <input required type="tel" name="Phone_Number" id="Phone_Number" placeholder="1234567890" pattern="[0-9]{10}">
             <br>
-            <label for="WANum">WhatsApp No. </label>
-            <input required type="tel" name="WANum" id="WhatsApp_Number" placeholder="1234567890" pattern="[0-9]{10}">
+            <label for="WhatsApp_Number">WhatsApp No. </label>
+            <input required type="tel" name="WhatsApp_Number" id="WhatsApp_Number" placeholder="1234567890" pattern="[0-9]{10}">
             <br>
             <label for="Email">Email </label>
             <input required type="email" name="Email" id="Email" placeholder="name@mail.com">
@@ -47,8 +47,8 @@
     </div>
     <div class="Academic">
         <h2>Academic Information</h2>
-            <label for="RNum">Roll No.</label>
-            <input type="number" name="RNum" id="Roll_Number" placeholder="Your University Roll Number here" required>
+            <label for="Roll_Number">Roll No.</label>
+            <input type="number" name="Roll_Number" id="Roll_Number" placeholder="Your University Roll Number here" required>
             <br>
             <label for="Course">Course </label>
             <select name="Course" id="Course" required>
@@ -92,5 +92,18 @@
     </div>
     </form>
 </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxrK9Ae_uV5y9QUYnaqLN3_Lx8yHO0YVmX6DKHxPA7hfHFcGyVB6WcYGcRx5vqLexG6/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Data Successfully Submitted!"))
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
 </body>
 </html>

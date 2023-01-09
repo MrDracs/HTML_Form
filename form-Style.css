@@ -9,6 +9,12 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
 }
+@media screen and (max-width:600px) {
+    body{
+        margin-left: 0%;
+        margin-right: 0%;
+    }    
+}
 .Personal{
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px;
@@ -77,4 +83,9 @@ fieldset{
 }
 h1{
     color: darkblue;
+}
+
+.btnSub:hover, .btnRes:hover{
+    background-color: crimson;
+    cursor: pointer;
 }
